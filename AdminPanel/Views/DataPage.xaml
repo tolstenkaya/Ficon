@@ -25,12 +25,13 @@
                 Content="Back"
                 Click="BtnBack_click"/>
 
-        <DataGrid Grid.Row="1" x:Name="AdminsGrid">
+        <DataGrid Grid.Row="1" x:Name="UserGrid"
+                  AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="*"/>
-                <DataGridTextColumn Header="Login" Width="*"/>
-                <DataGridTextColumn Header="Password" Width="*"/>
-                <DataGridTextColumn Header="Roles" Width="*"/>
+                <DataGridTextColumn Header="Id" Width="*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Login" Width="*" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Password" Width="*" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Roles" Width="*" Binding="{Binding Roles.Names }"/>
             </DataGrid.Columns>
             
         </DataGrid>

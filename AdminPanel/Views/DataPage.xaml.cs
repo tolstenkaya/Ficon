@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdminPanel.Model;
 
 namespace AdminPanel.Views
 {
@@ -21,8 +22,7 @@ namespace AdminPanel.Views
     /// </summary>
     public partial class DataPage : Page
     {
-        public IEnumerable AppData { get; private set; }
-
+       
         public DataPage()
         {
             InitializeComponent();
@@ -30,12 +30,12 @@ namespace AdminPanel.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-           
+            UserGrid.ItemsSource = AppData.db.Users.ToList();
         }
 
         private void BtnBack_click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.GoBack();
         }
     }
 }

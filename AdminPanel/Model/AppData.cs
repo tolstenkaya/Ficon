@@ -8,5 +8,6 @@ namespace AdminPanel.Model
 {
     internal class AppData
     {
+        public static Financial_conditionEntities db = new Financial_conditionEntities();
     }
 }

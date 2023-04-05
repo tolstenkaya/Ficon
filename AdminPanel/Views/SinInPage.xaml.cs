@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminPanel.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,16 @@ namespace AdminPanel.Views
 
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
+            var CurrentUser = AppData.db.Users.FirstOrDefault(u => u.Login == TxbLogin.Text && u.Password == TxbPassword.Text);
 
+            if (CurrentUser != null)
+            {
+                NavigationService.Navigate(new DataPage());
+            }
+            else
+            {
+                MessageBox.Show("Нет в базе");
+            }
         }
     }
 }

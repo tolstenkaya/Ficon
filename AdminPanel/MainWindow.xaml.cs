@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminPanel.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace AdminPanel
         public MainWindow()
         {
             InitializeComponent();
+
+            MainFrame.Navigate(new SinInPage());
         }
     }
 }
