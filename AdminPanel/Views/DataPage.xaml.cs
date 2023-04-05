@@ -37,5 +37,20 @@ namespace AdminPanel.Views
         {
             NavigationService.GoBack();
         }
+
+        private void Add_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddValues());
+        }
+
+        private void Change_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delite_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

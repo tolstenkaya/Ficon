@@ -32,6 +32,7 @@ namespace AdminPanel.Views
 
             if (CurrentUser != null)
             {
+                
                 NavigationService.Navigate(new DataPage());
             }
             else

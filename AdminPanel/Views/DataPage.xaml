@@ -35,5 +35,27 @@
             </DataGrid.Columns>
             
         </DataGrid>
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+            <Button Height="24"
+                    Margin="10 0"
+                    Click="Add_Btn_Click"
+                    Content="Add"
+                    Width="150"/>
+            
+            <Button Height="24"
+                    Margin="10 0"
+                    Click="Change_Btn_Click"
+                    Content="Change"
+                    Width="150"/>
+            
+            <Button Height="24"
+                    Margin="10 0"
+                    Click="Delite_Btn_Click"
+                    Content="Delite"
+                    Width="150"/>
+        </StackPanel>
     </Grid>
 </Page>
