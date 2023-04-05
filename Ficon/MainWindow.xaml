@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Frame x:Name="StartFrame" NavigationUIVisibility="Hidden"/>
+        <Button Width="150" Height="50" Content="Go to SignUp page" Click="Button_Click"/>
     </Grid>
 </Window>

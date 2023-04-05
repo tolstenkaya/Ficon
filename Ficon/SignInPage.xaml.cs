@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Ficon
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SignInPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignInPage : Window
     {
-        public MainWindow()
+        public SignInPage()
         {
             InitializeComponent();
-            StartFrame.Navigate(new SignInPage());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
