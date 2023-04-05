@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace AdminPanel.Views
     /// </summary>
     public partial class DataPage : Page
     {
+        public IEnumerable AppData { get; private set; }
+
         public DataPage()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace AdminPanel.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+           
         }
 
         private void BtnBack_click(object sender, RoutedEventArgs e)
