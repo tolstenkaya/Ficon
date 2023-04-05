@@ -32,12 +32,20 @@ namespace AdminPanel.Views
 
             if (CurrentUser != null)
             {
-                
-                NavigationService.Navigate(new DataPage());
+
+                if (CurrentUser.RolesId == 1)
+                {
+                    NavigationService.Navigate(new DataPage());
+                }
+                else
+                {
+                    MessageBox.Show("Вы не являетесь админом", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+              
             }
             else
             {
-                MessageBox.Show("Нет в базе");
+                MessageBox.Show("Такой записи нет в БД", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
