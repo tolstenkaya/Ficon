@@ -12,10 +12,20 @@
     <Grid Background="White">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition />
-            <RowDefinition  Height="60"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition  Height="0.1*"/>
         </Grid.RowDefinitions>
+
+        <StackPanel Orientation ="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Найти:" FontSize="16"/>
+            <TextBox Width="300"
+                     FontSize="16"
+                     Name="Search_TBox"
+                     TextChanged="Serch_Tbox_TextChanged"/>
+        </StackPanel>
 
 
         <Button Height="20"
@@ -44,12 +54,7 @@
                     Click="Add_Btn_Click"
                     Content="Add"
                     Width="150"/>
-            
-            <Button Height="24"
-                    Margin="10 0"
-                    Click="Change_Btn_Click"
-                    Content="Change"
-                    Width="150"/>
+           
             
             <Button Height="24"
                     Margin="10 0"

@@ -50,7 +50,27 @@ namespace AdminPanel.Views
 
         private void Delite_Btn_Click(object sender, RoutedEventArgs e)
         {
+            if(MessageBox.Show("Вы точно хотите удалить пользователя","Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var CurrentUser = UserGrid.SelectedItem as Users;
+                AppData.db.Users.Remove(CurrentUser);
+                AppData.db.SaveChanges();
 
+                UserGrid.ItemsSource = AppData.db.Users.ToList();
+                MessageBox.Show("Success");
+            }
+        }
+
+        private void Serch_Tbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                UserGrid.ItemsSource = AppData.db.Users.Where(item => item.Login == Search_TBox.Text || item.Login.Contains(Search_TBox.Text)).ToList();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(),"Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
