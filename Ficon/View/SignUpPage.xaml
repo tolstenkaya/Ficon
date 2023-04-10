@@ -1,0 +1,61 @@
+﻿<Page x:Class="Ficon.View.SignUpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ficon.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SignUpPage">
+    <Page.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="DeepSkyBlue" Offset="0.1" />
+            <GradientStop Color="DarkViolet" Offset="1" />
+        </LinearGradientBrush>
+    </Page.Background>
+    <Grid>
+        <Rectangle  Height="400" Canvas.Left="86"  Canvas.Top="77" Width="320">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="DeepSkyBlue" Offset="0.1" />
+                    <GradientStop Color="DarkViolet" Offset="1.25" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="25" Color="Black" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <StackPanel Margin="0 30 0 0">
+            <TextBlock FontSize="26" FontWeight="Light" Text="Sign up form" Foreground="#ffffff" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Margin="65">
+            <TextBlock FontSize="14" Margin="5" Text="First Name" Foreground="#ffff"  Width="280"/>
+            <TextBox x:Name="FirstName" Foreground="Black" 
+                     BorderBrush="White" BorderThickness="0 0 0 1.5" Width="280"/>
+            <TextBlock FontSize="14" Margin="5" Text="Last Name" Foreground="#ffff"  Width="280"/>
+            <TextBox x:Name="LastName" Foreground="Black" 
+                     BorderBrush="White" BorderThickness="0 0 0 1.5" Width="280"/>
+            <TextBlock x:Name="dt" FontSize="14" Margin="5" Text="Date of Birth" Foreground="#ffff"  Width="280"/>
+            <DatePicker x:Name="DateBirthday"  Width="280" IsTodayHighlighted="True" IsDropDownOpen="False" SelectedDateFormat="Short" SelectiveScrollingGrid.SelectiveScrollingOrientation="Horizontal"/>
+            <TextBlock FontSize="14" Margin="5" Text="Login" Foreground="#ffff"  Width="280"/>
+            <TextBox x:Name="Login" Foreground="Black" 
+                     BorderBrush="White" BorderThickness="0 0 0 1.5" Width="280"/>
+            <TextBlock FontSize="14" Margin="5" Text="Password" Foreground="#ffff"  Width="280"/>
+            <PasswordBox x:Name="Password" Foreground="Black" 
+                     BorderBrush="White" BorderThickness="0 0 0 1.5" Margin="0 0 0 0"  Width="280"/>
+            <TextBlock FontSize="14" Margin="5" Text="Repeat password" Foreground="#ffff"  Width="280"/>
+            <PasswordBox x:Name="PasswordRepeat" Foreground="Black" 
+                     BorderBrush="White" BorderThickness="0 0 0 1.5" Margin="0 0 0 20"  Width="280"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom">
+            <Button x:Name="SignUp" Width="100" Height="40" Margin="0 0 0 40" Background="White" Content="Sign in" FontSize="20" Click="SignUp_Click">
+                <Button.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="DeepSkyBlue" Offset="0" />
+                        <GradientStop Color="DarkViolet" Offset="1.5" />
+                    </LinearGradientBrush>
+                </Button.Foreground>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

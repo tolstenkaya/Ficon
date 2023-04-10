@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ficon"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="460" Width="810" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Frame x:Name="StartFrame" NavigationUIVisibility="Hidden"/>
-        <Button Width="150" Height="50" Content="Go to SignUp page" Click="Button_Click"/>
+        <Frame x:Name="StartFrame" HorizontalContentAlignment="Center" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

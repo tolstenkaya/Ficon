@@ -25,10 +25,5 @@ namespace Ficon
             InitializeComponent();
             StartFrame.Navigate(new SignInPage());
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

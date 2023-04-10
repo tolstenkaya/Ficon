@@ -46,10 +46,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RolesId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DataBirthday" Type="date" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Enterpris__UserI__3E52440B">
+        <Association Name="FK__Enterpris__UserI__70DDC3D8">
           <End Role="Users" Type="Self.Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -63,7 +66,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Financial__Enter__403A8C7D">
+        <Association Name="FK__Financial__Enter__73BA3083">
           <End Role="Enterprise" Type="Self.Enterprise" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -77,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__RolesId__3A81B327">
+        <Association Name="FK__Users__RolesId__6C190EBB">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -106,15 +109,15 @@
     [Financial_Indicators].[Profitability] AS [Profitability]
     FROM [dbo].[Financial_Indicators] AS [Financial_Indicators]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Enterpris__UserI__3E52440B" Association="Self.FK__Enterpris__UserI__3E52440B">
+          <AssociationSet Name="FK__Enterpris__UserI__70DDC3D8" Association="Self.FK__Enterpris__UserI__70DDC3D8">
             <End Role="Users" EntitySet="Users" />
             <End Role="Enterprise" EntitySet="Enterprise" />
           </AssociationSet>
-          <AssociationSet Name="FK__Financial__Enter__403A8C7D" Association="Self.FK__Financial__Enter__403A8C7D">
+          <AssociationSet Name="FK__Financial__Enter__73BA3083" Association="Self.FK__Financial__Enter__73BA3083">
             <End Role="Enterprise" EntitySet="Enterprise" />
             <End Role="Financial_Indicators" EntitySet="Financial_Indicators" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__RolesId__3A81B327" Association="Self.FK__Users__RolesId__3A81B327">
+          <AssociationSet Name="FK__Users__RolesId__6C190EBB" Association="Self.FK__Users__RolesId__6C190EBB">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -131,8 +134,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="800" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Enterpris__UserI__3E52440B" FromRole="Enterprise" ToRole="Users" />
-          <NavigationProperty Name="Financial_Indicators" Relationship="Self.FK__Financial__Enter__403A8C7D" FromRole="Enterprise" ToRole="Financial_Indicators" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Enterpris__UserI__70DDC3D8" FromRole="Enterprise" ToRole="Users" />
+          <NavigationProperty Name="Financial_Indicators" Relationship="Self.FK__Financial__Enter__73BA3083" FromRole="Enterprise" ToRole="Financial_Indicators" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -140,7 +143,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Names" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RolesId__3A81B327" FromRole="Roles" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RolesId__6C190EBB" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -148,10 +151,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RolesId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataBirthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Enterprise" Relationship="Self.FK__Enterpris__UserI__3E52440B" FromRole="Users" ToRole="Enterprise" />
-          <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RolesId__3A81B327" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Enterprise" Relationship="Self.FK__Enterpris__UserI__70DDC3D8" FromRole="Users" ToRole="Enterprise" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RolesId__6C190EBB" FromRole="Users" ToRole="Roles" />
         </EntityType>
         <EntityType Name="Financial_Indicators">
           <Key>
@@ -170,9 +176,9 @@
           <Property Name="LiquidityAndSolvency" Type="Double" Nullable="false" />
           <Property Name="BusinessActivity" Type="Double" Nullable="false" />
           <Property Name="Profitability" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Enterprise" Relationship="Self.FK__Financial__Enter__403A8C7D" FromRole="Financial_Indicators" ToRole="Enterprise" />
+          <NavigationProperty Name="Enterprise" Relationship="Self.FK__Financial__Enter__73BA3083" FromRole="Financial_Indicators" ToRole="Enterprise" />
         </EntityType>
-        <Association Name="FK__Enterpris__UserI__3E52440B">
+        <Association Name="FK__Enterpris__UserI__70DDC3D8">
           <End Role="Users" Type="Self.Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -186,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Financial__Enter__403A8C7D">
+        <Association Name="FK__Financial__Enter__73BA3083">
           <End Role="Enterprise" Type="Self.Enterprise" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -200,7 +206,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__RolesId__3A81B327">
+        <Association Name="FK__Users__RolesId__6C190EBB">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -219,15 +225,15 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="Financial_Indicators" EntityType="Self.Financial_Indicators" />
-          <AssociationSet Name="FK__Enterpris__UserI__3E52440B" Association="Self.FK__Enterpris__UserI__3E52440B">
+          <AssociationSet Name="FK__Enterpris__UserI__70DDC3D8" Association="Self.FK__Enterpris__UserI__70DDC3D8">
             <End Role="Users" EntitySet="Users" />
             <End Role="Enterprise" EntitySet="Enterprise" />
           </AssociationSet>
-          <AssociationSet Name="FK__Financial__Enter__403A8C7D" Association="Self.FK__Financial__Enter__403A8C7D">
+          <AssociationSet Name="FK__Financial__Enter__73BA3083" Association="Self.FK__Financial__Enter__73BA3083">
             <End Role="Enterprise" EntitySet="Enterprise" />
             <End Role="Financial_Indicators" EntitySet="Financial_Indicators" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__RolesId__3A81B327" Association="Self.FK__Users__RolesId__3A81B327">
+          <AssociationSet Name="FK__Users__RolesId__6C190EBB" Association="Self.FK__Users__RolesId__6C190EBB">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -260,6 +266,9 @@
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DataBirthday" ColumnName="DataBirthday" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
