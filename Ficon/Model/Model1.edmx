@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Financial_conditionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Financial_conditionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Enterprise">
           <Key>
             <PropertyRef Name="Id" />
@@ -37,7 +37,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Names" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
@@ -46,13 +46,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RolesId" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="DataBirthday" Type="date" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataBirthday" Type="datetime" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Enterpris__UserI__70DDC3D8">
+        <Association Name="FK__Enterpris__UserI__71D1E811">
           <End Role="Users" Type="Self.Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -80,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__RolesId__6C190EBB">
+        <Association Name="FK__Users__RolesId__6D0D32F4">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -109,7 +109,7 @@
     [Financial_Indicators].[Profitability] AS [Profitability]
     FROM [dbo].[Financial_Indicators] AS [Financial_Indicators]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Enterpris__UserI__70DDC3D8" Association="Self.FK__Enterpris__UserI__70DDC3D8">
+          <AssociationSet Name="FK__Enterpris__UserI__71D1E811" Association="Self.FK__Enterpris__UserI__71D1E811">
             <End Role="Users" EntitySet="Users" />
             <End Role="Enterprise" EntitySet="Enterprise" />
           </AssociationSet>
@@ -117,13 +117,12 @@
             <End Role="Enterprise" EntitySet="Enterprise" />
             <End Role="Financial_Indicators" EntitySet="Financial_Indicators" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__RolesId__6C190EBB" Association="Self.FK__Users__RolesId__6C190EBB">
+          <AssociationSet Name="FK__Users__RolesId__6D0D32F4" Association="Self.FK__Users__RolesId__6D0D32F4">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Financial_conditionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -151,11 +150,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RolesId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DataBirthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataBirthday" Type="DateTime" Precision="3" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Enterprise" Relationship="Self.FK__Enterpris__UserI__70DDC3D8" FromRole="Users" ToRole="Enterprise" />
           <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RolesId__6C190EBB" FromRole="Users" ToRole="Roles" />
         </EntityType>

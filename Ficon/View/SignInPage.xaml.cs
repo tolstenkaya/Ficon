@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace Ficon
 {
@@ -27,18 +28,27 @@ namespace Ficon
             InitializeComponent();
         }
 
+        private string GetHash(string input)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            return Convert.ToBase64String(hash);
+        }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            var current_user = AppData.db.Users.FirstOrDefault(user => user.Login == Login.Text && user.Password == Password.Password.ToString());
+            var x = GetHash(Password.Password.ToString());
+
+            var current_user = AppData.db.Users.FirstOrDefault(user => user.Login == Login.Text && user.Password == x);
             var current_user_login = AppData.db.Users.FirstOrDefault(user => user.Login == Login.Text);
             if (current_user != null)
             {
-                MessageBox.Show($"We're glad to see you, {Login.Text}", "Notification",MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"We're glad to see you, {Login.Text}", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                if(current_user_login!=null)
+                if (current_user_login != null)
                 {
                     MessageBox.Show($"Incorrect password. Try again!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 }

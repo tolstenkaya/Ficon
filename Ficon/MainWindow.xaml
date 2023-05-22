@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ficon"
         mc:Ignorable="d"
-        Title="MainWindow" Height="460" Width="810" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="745" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <SolidColorBrush Color="DimGray">
+        </SolidColorBrush>
+    </Window.Background>
     <Grid>
         <Frame x:Name="StartFrame" HorizontalContentAlignment="Center" NavigationUIVisibility="Hidden"/>
     </Grid>

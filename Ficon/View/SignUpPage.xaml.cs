@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,27 +28,59 @@ namespace Ficon.View
             InitializeComponent();
         }
 
+        private string GetHash(string input)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            return Convert.ToBase64String(hash);
+        }
+
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
-            Users user = new Users();
+            try
+            {
+                Users user = new Users();
 
-            user.Id = 1;
-            Roles role = new Roles();
-            role.Id = 2;
-            role.Names = "user";
-            user.Roles = role;
-            user.FirstName = FirstName.Text;
-            user.LastName = LastName.Text;
-            user.DataBirthday = (DateTime)DateBirthday.SelectedDate;
-            user.Login = Login.Text;
-            user.Password = Password.Password.ToString();
+                user.Id = 1;
+                user.Roles = AppData.db.Roles.FirstOrDefault(role => role.Names == "user");
+                user.FirstName = FirstName.Text;
+                user.LastName = LastName.Text;
+                user.DataBirthday = (DateTime)DateBirthday.SelectedDate;
+                user.Login = Login.Text;
 
-            AppData.db.Users.Add(user);
-           
-            AppData.db.SaveChanges();
-           
-            MessageBox.Show("You Create New User");
+                if (Password.Password == PasswordRepeat.Password)
+                {
+                    user.Password = GetHash(Password.Password.ToString());
+                    AppData.db.Users.Add(user);
 
+                    AppData.db.SaveChanges();
+
+                    MessageBox.Show("You Create New User");
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    Password.Background = new SolidColorBrush(Colors.Red);
+                    PasswordRepeat.Background = new SolidColorBrush(Colors.Red);
+                    PasswordRepeat.Password = "";
+                    MessageBox.Show("Password mismatch!");
+                }
+                Password.Background = new SolidColorBrush(Colors.White);
+                PasswordRepeat.Background = new SolidColorBrush(Colors.White);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                {
+                    MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                    foreach (DbValidationError err in validationError.ValidationErrors)
+                    {
+                        MessageBox.Show(err.ErrorMessage);
+                    }
+                }
+
+            }
         }
     }
 }
