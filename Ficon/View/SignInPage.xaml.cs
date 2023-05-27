@@ -45,6 +45,7 @@ namespace Ficon
             if (current_user != null)
             {
                 MessageBox.Show($"We're glad to see you, {Login.Text}", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new MainUsersPage());
             }
             else
             {

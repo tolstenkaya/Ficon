@@ -5,10 +5,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Ficon.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainUsersPage">
+      d:DesignHeight="745" d:DesignWidth="1380"
+      Title="MainUsersPage" Height="745" Width="1380">
 
     <Grid>
-        
+        <StackPanel CanVerticallyScroll="True">
+                <StackPanel Margin="0 5 0 0">
+                    <TextBlock FontSize="34" FontWeight="Light" Text="Ficon" TextAlignment="Center">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="DeepSkyBlue" Offset="0" />
+                                <GradientStop Color="DarkViolet" Offset="1.5" />
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Margin="0 50 0 0" HorizontalAlignment="Center" Orientation="Horizontal" Height="125" VerticalAlignment="Top">
+                    <TextBlock FontSize="20" Margin=" 10 0 0 0" Text="Enter company name you wanna check up: " Foreground="#ffff"  Width="300" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox x:Name="CompanyName" Foreground="Black" 
+                     BorderBrush="White" BorderThickness="0 0 0 1.5" Width="480" Height="25" Margin="50 10 0 0" VerticalContentAlignment="Center"/>
+
+                </StackPanel>
+            <StackPanel  Margin="100 0 200 0"  Width="500" Height="500">
+                <Button x:Name="PropertyStatus" Width="150" Height="50" Content="Property Status" Click="PropertyStatus_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
